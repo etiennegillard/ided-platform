@@ -1,0 +1,9 @@
+node_modules/
+.env
+backend/.env
+*.log
+gold-master.bundle
+.DS_Store
+*.zip
+*.tar.gz
+package-lock.json
