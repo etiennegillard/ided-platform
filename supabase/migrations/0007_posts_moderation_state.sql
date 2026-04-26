@@ -1,0 +1,2 @@
+do $$ begin create type post_moderation_state_t as enum ('visible', 'restricted', 'removed'); exception when duplicate_object then null; end $$;
+alter table posts add column if not exists moderation_state post_moderation_state_t not null default 'visible', add column if not exists moderation_reason_code text, add column if not exists vip_fast_tracked boolean not null default false, add column if not exists trust_quarantined boolean not null default false, add column if not exists updated_at timestamptz not null default now(), add column if not exists deleted_at timestamptz;

@@ -1,0 +1,1 @@
+create table if not exists webhook_events (id text primary key, vendor text not null, payload_hash bytea not null, profile_id uuid references profiles(id), received_at timestamptz not null default now());

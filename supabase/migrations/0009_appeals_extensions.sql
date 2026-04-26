@@ -1,0 +1,2 @@
+do $$ begin create type appeal_resolution_t as enum ('upheld', 'overturned', 'partially_overturned'); exception when duplicate_object then null; end $$;
+alter table appeals add column if not exists appellant_id uuid references profiles(id), add column if not exists filed_at timestamptz not null default now(), add column if not exists resolved_at timestamptz, add column if not exists resolution appeal_resolution_t, add column if not exists reviewer_id uuid references profiles(id), add column if not exists reviewer_reasoning text;
